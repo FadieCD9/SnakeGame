@@ -40,11 +40,11 @@ public class SnakeGame extends JFrame {
                 int x = snakeParts.getFirst().x + (int) (speed * Math.cos(angle));
                 int y = snakeParts.getFirst().y + (int) (speed * Math.sin(angle));
 
-                if (x + 10 > getWidth() || x < 0) {
+                if (x + 10 > panel.getWidth() || x < 0) {
                     angle = Math.PI - angle;
                 }
 
-                if (y + 10 > getHeight() || y < 0) {
+                if (y + 10 > panel.getHeight() || y < 0) {
                     angle = -angle;
                 }
 
@@ -54,9 +54,13 @@ public class SnakeGame extends JFrame {
                 panel.repaint();
             }
         });
-        timer.start();
 
-        setVisible(true);
+        try {
+            timer.start();
+            setVisible(true);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
